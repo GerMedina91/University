@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniversityApi.DataAccess;
 
@@ -10,9 +11,10 @@ using UniversityApi.DataAccess;
 namespace UniversityApi.Migrations
 {
     [DbContext(typeof(UniversityDBContext))]
-    partial class UniversityDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221123032245_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,19 +57,17 @@ namespace UniversityApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CreateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("DeleteBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("CreateUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DeleteUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -76,14 +76,19 @@ namespace UniversityApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UpdateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("UpdateUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CreateUserId");
+
+                    b.HasIndex("DeleteUserId");
+
+                    b.HasIndex("UpdateUserId");
 
                     b.ToTable("Categories");
                 });
@@ -97,19 +102,17 @@ namespace UniversityApi.Migrations
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CreateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("DeleteBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("CreateUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DeleteUserId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -118,17 +121,22 @@ namespace UniversityApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UpdateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UpdateUserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CourseId")
                         .IsUnique();
+
+                    b.HasIndex("CreateUserId");
+
+                    b.HasIndex("DeleteUserId");
+
+                    b.HasIndex("UpdateUserId");
 
                     b.ToTable("Chapters");
                 });
@@ -139,19 +147,17 @@ namespace UniversityApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CreateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("DeleteBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("CreateUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DeleteUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -185,14 +191,19 @@ namespace UniversityApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UpdateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("UpdateUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CreateUserId");
+
+                    b.HasIndex("DeleteUserId");
+
+                    b.HasIndex("UpdateUserId");
 
                     b.ToTable("Courses");
                 });
@@ -203,19 +214,17 @@ namespace UniversityApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CreateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("DeleteBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("CreateUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DeleteUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("datetime(6)");
@@ -231,14 +240,19 @@ namespace UniversityApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UpdateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("UpdateUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CreateUserId");
+
+                    b.HasIndex("DeleteUserId");
+
+                    b.HasIndex("UpdateUserId");
 
                     b.ToTable("Students");
                 });
@@ -249,19 +263,17 @@ namespace UniversityApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CreateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("DeleteBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("CreateUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DeleteUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -284,14 +296,19 @@ namespace UniversityApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UpdateBy")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("UpdateUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CreateUserId");
+
+                    b.HasIndex("DeleteUserId");
+
+                    b.HasIndex("UpdateUserId");
 
                     b.ToTable("Users");
                 });
@@ -326,6 +343,33 @@ namespace UniversityApi.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("UniversityApi.Models.DataModels.Category", b =>
+                {
+                    b.HasOne("UniversityApi.Models.DataModels.User", "CreateBy")
+                        .WithMany()
+                        .HasForeignKey("CreateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "DeleteBy")
+                        .WithMany()
+                        .HasForeignKey("DeleteUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "UpdateBy")
+                        .WithMany()
+                        .HasForeignKey("UpdateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreateBy");
+
+                    b.Navigation("DeleteBy");
+
+                    b.Navigation("UpdateBy");
+                });
+
             modelBuilder.Entity("UniversityApi.Models.DataModels.Chapter", b =>
                 {
                     b.HasOne("UniversityApi.Models.DataModels.Course", "Course")
@@ -334,7 +378,112 @@ namespace UniversityApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("UniversityApi.Models.DataModels.User", "CreateBy")
+                        .WithMany()
+                        .HasForeignKey("CreateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "DeleteBy")
+                        .WithMany()
+                        .HasForeignKey("DeleteUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "UpdateBy")
+                        .WithMany()
+                        .HasForeignKey("UpdateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Course");
+
+                    b.Navigation("CreateBy");
+
+                    b.Navigation("DeleteBy");
+
+                    b.Navigation("UpdateBy");
+                });
+
+            modelBuilder.Entity("UniversityApi.Models.DataModels.Course", b =>
+                {
+                    b.HasOne("UniversityApi.Models.DataModels.User", "CreateBy")
+                        .WithMany()
+                        .HasForeignKey("CreateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "DeleteBy")
+                        .WithMany()
+                        .HasForeignKey("DeleteUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "UpdateBy")
+                        .WithMany()
+                        .HasForeignKey("UpdateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreateBy");
+
+                    b.Navigation("DeleteBy");
+
+                    b.Navigation("UpdateBy");
+                });
+
+            modelBuilder.Entity("UniversityApi.Models.DataModels.Student", b =>
+                {
+                    b.HasOne("UniversityApi.Models.DataModels.User", "CreateBy")
+                        .WithMany()
+                        .HasForeignKey("CreateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "DeleteBy")
+                        .WithMany()
+                        .HasForeignKey("DeleteUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "UpdateBy")
+                        .WithMany()
+                        .HasForeignKey("UpdateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreateBy");
+
+                    b.Navigation("DeleteBy");
+
+                    b.Navigation("UpdateBy");
+                });
+
+            modelBuilder.Entity("UniversityApi.Models.DataModels.User", b =>
+                {
+                    b.HasOne("UniversityApi.Models.DataModels.User", "CreateBy")
+                        .WithMany()
+                        .HasForeignKey("CreateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "DeleteBy")
+                        .WithMany()
+                        .HasForeignKey("DeleteUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityApi.Models.DataModels.User", "UpdateBy")
+                        .WithMany()
+                        .HasForeignKey("UpdateUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreateBy");
+
+                    b.Navigation("DeleteBy");
+
+                    b.Navigation("UpdateBy");
                 });
 
             modelBuilder.Entity("UniversityApi.Models.DataModels.Course", b =>
